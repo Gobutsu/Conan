@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Conan</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+
+<body>
+    <div class="title">
+        <img src="render.svg" alt="Logo" class="logo">
+        <h1>CONAN</h1>
+    </div>
+    <h3>{{ domains|length }} domains found for <b>{{ email }}</b><br/><i>Seeing a website on this page does not necessarily mean you're registered to it.</i></h3>
+
+    <div class="buttons">
+        <a target="_blank" href="/json"><button>Download as JSON</button></a>
+    </div>
+    <div class="domains">
+        {% for domain in domains|sort(attribute='difficulty') %}
+        <div data-email="{{domain.email}}" data-domain={{ domain.domain }} data-url={{ domain.url }} data-difficulty={{ domain.difficulty }} data-notes="{{ domain.notes|replace('"', '&quot;') }}" data-last-emails="{{ domain.last_emails|replace('>', '')|replace('<', '')|replace('"', '&quot;') }}">
+            <div class="domain">
+                <img src="https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&size=32&url=https://{{ domain.domain }}"
+                    alt="Favicon">
+                <h5>{{ domain.domain }}</h5>
+            </div>
+            <div class="difficulty {{domain.difficulty}}">
+                <p>Difficulty to delete</p>
+                <p>{{domain.difficulty.capitalize()}}</p>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    <h3 class="credits"><a href="https://github.com/Gobutsu/Conan">Conan</a> by <a href="https://github.com/Gobutsu">Gobutsu</a></h3>
+
+    <script>
+        function generateFooter(emails) {
+            return '<table class="popup-table"><tr><th>Date</th><th>Subject</th></tr><tr>' 
+                + JSON.parse(emails)
+                .sort((a, b) => new Date(b.date) - new Date(a.date))
+                .slice(0, 5)
+                .map(email => {
+                    let deleteKeywords = [
+                        "closing",
+                        "close",
+                        "delete",
+                        "deletion",
+                        "deleting",
+                        "erase",
+                        "erasing",
+                    ]
+                    let containsDeleteKeyword = deleteKeywords.some(keyword => email.subject.toLowerCase().includes(keyword))
+                    return `<tr class='${containsDeleteKeyword ? "delete" : ""}'><td>${new Date(Date.parse(email.date)).toLocaleDateString()}</td><td>${email.subject}</td></tr>`
+                })
+                .join('') 
+            + '</table>'
+        }
+
+        document.querySelectorAll('.domains > div').forEach(item => item.addEventListener('click', function (e) {
+            Swal.fire({
+                background: '#212a31',
+                title: '<h3 class="popup-title">' + this.dataset.domain + '</h3>',
+                html: this.dataset.notes == "None" ? '' : '<p class="popup-text">' + this.dataset.notes + '</p>',
+                confirmButtonText: 'Go to deletion page',
+                showConfirmButton: this.dataset.url != "None",
+                showCancelButton: true,
+                cancelButtonText: 'Visit website',
+                color: '#fff',
+                showDenyButton: this.dataset.email != "None",
+                denyButtonText: 'Copy email',
+                footer: generateFooter(this.dataset.lastEmails)
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    window.open(this.dataset.url, '_blank');
+                } else if (result.dismiss === Swal.DismissReason.cancel) {
+                    window.open('https://' + this.dataset.domain, '_blank');
+                } else if (result.isDenied) {
+                    navigator.clipboard.writeText(this.dataset.email);
+                    alert('Email copied to clipboard');
+                }
+            })
+        }))
+    </script>
+</body>
+
+</html>

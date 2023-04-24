@@ -1,0 +1,62 @@
+[
+    {
+        "email_provider": "@gmail.com",
+        "imap_server": "imap.gmail.com"
+    },
+    {
+        "email_provider": "@yahoo.com",
+        "imap_server": "imap.mail.yahoo.com"
+    },
+    {
+        "email_provider": "@outlook.com",
+        "imap_server": "imap-mail.outlook.com"
+    },
+    {
+        "email_provider": "@aol.com",
+        "imap_server": "imap.aol.com"
+    },
+    {
+        "email_provider": "@icloud.com",
+        "imap_server": "imap.mail.me.com"
+    },
+    {
+        "email_provider": "@zoho.com",
+        "imap_server": "imap.zoho.com"
+    },
+    {
+        "email_provider": "@protonmail.com",
+        "imap_server": "mail.protonmail.com"
+    },
+    {
+        "email_provider": "@fastmail.com",
+        "imap_server": "imap.fastmail.com"
+    },
+    {
+        "email_provider": "@mail.com",
+        "imap_server": "imap.mail.com"
+    },
+    {
+        "email_provider": "@yandex.com",
+        "imap_server": "imap.yandex.com"
+    },
+    {
+        "email_provider": "@gmx.com",
+        "imap_server": "imap.gmx.com"
+    },
+    {
+        "email_provider": "@hotmail.com",
+        "imap_server": "imap-mail.outlook.com"
+    },
+    {
+        "email_provider": "@live.com",
+        "imap_server": "imap-mail.outlook.com"
+    },
+    {
+        "email_provider": "@me.com",
+        "imap_server": "imap.mail.me.com"
+    },
+    {
+        "email_provider": "@inbox.com",
+        "imap_server": "imap-mail.outlook.com"
+    }
+]

@@ -1,0 +1,5 @@
+/__pycache__
+/Conanmail.egg-info
+/dist
+/build
+.env

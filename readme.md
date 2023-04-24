@@ -4,6 +4,9 @@
 ## 🤔 What is it?
 This tool aims at finding the websites where you could have created an account in the past. It does so by logging into your email account and looking for emails that sent you mails. You'll get a complete list of all the domains that sent you emails. **The informations related on how to delete accounts are provided by [JustDeleteMe](https://github.com/jdm-contrib/jdm)**.
 
+### If you tend to regularly delete your mails, this tool will not be very useful to you.
+It's point is to find the websites where you created an account in the past, and to help you delete them. If you regularly delete your mails, you won't have any emails from these websites, and the tool won't be able to find them.
+
 ## 🚀 How to use it?
 ```
 pip install conanmail

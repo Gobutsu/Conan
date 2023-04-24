@@ -17,9 +17,9 @@ conan [-h] [-r FILE] [-e EMAIL] [-m FILE]
 -m is for importing a .mbox file
 ```
 
-When using Conan, you should choose between -i and -m.
+When using Conan, you should choose between -e and -m.
 `-m` is ideal if you've got a lot of emails in your mailbox, as it will be significantly faster.
-`-i` is ideal if you don't want to export your mailbox to a file.
+`-e` is ideal if you don't want to export your mailbox to a file.
 
 ### 📥 Using -e
 You will need to enter a password to login to your mailbox.

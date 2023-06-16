@@ -7,6 +7,19 @@ This tool aims at finding the websites where you could have created an account i
 ### If you tend to regularly delete your mails, this tool will not be very useful to you.
 It's point is to find the websites where you created an account in the past, and to help you delete them. If you regularly delete your mails, you won't have any emails from these websites, and the tool won't be able to find them.
 
+## 📦 Installation
+You can either install it from Github (recommended):
+```
+git clone https://github.com/Gobutsu/Conan
+cd Conan
+python setup.py install
+```
+Or from Pypi:
+```
+pip install conanmail
+```
+Installation can be confirmed by typing `conan` in a terminal.
+
 ## 🚀 How to use it?
 ```
 pip install conanmail
